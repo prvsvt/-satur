@@ -1,20 +1,20 @@
 #include "PluginProcessor.h"
 #include "PluginEditor.h"
 
-using Param = juce::AudioParameterFloat;
-using Range = juce::NormalisableRange<float>;
+using KonParam = juce::AudioParameterFloat;
+using KonRange = juce::NormalisableRange<float>;
 
 juce::AudioProcessorValueTreeState::ParameterLayout KonProcessor::createLayout()
 {
     std::vector<std::unique_ptr<juce::RangedAudioParameter>> p;
 
-    p.push_back (std::make_unique<Param> (juce::ParameterID { "thresh", 1 },  "Threshold", Range (-40.0f, 0.0f, 0.1f), -18.0f));
-    p.push_back (std::make_unique<Param> (juce::ParameterID { "ratio", 1 },   "Ratio",     Range (1.0f, 20.0f, 0.1f, 0.5f), 4.0f));
-    p.push_back (std::make_unique<Param> (juce::ParameterID { "attack", 1 },  "Attack",    Range (0.1f, 100.0f, 0.1f, 0.4f), 10.0f));
-    p.push_back (std::make_unique<Param> (juce::ParameterID { "release", 1 }, "Release",   Range (10.0f, 1000.0f, 1.0f, 0.4f), 120.0f));
-    p.push_back (std::make_unique<Param> (juce::ParameterID { "drive", 1 },   "Drive",     Range (0.0f, 24.0f, 0.1f), 6.0f));
-    p.push_back (std::make_unique<Param> (juce::ParameterID { "mix", 1 },     "Mix",       Range (0.0f, 100.0f, 1.0f), 100.0f));
-    p.push_back (std::make_unique<Param> (juce::ParameterID { "output", 1 },  "Output",    Range (-24.0f, 12.0f, 0.1f), 0.0f));
+    p.push_back (std::make_unique<KonParam> (juce::ParameterID { "thresh", 1 },  "Threshold", KonRange (-40.0f, 0.0f, 0.1f), -18.0f));
+    p.push_back (std::make_unique<KonParam> (juce::ParameterID { "ratio", 1 },   "Ratio",     KonRange (1.0f, 20.0f, 0.1f, 0.5f), 4.0f));
+    p.push_back (std::make_unique<KonParam> (juce::ParameterID { "attack", 1 },  "Attack",    KonRange (0.1f, 100.0f, 0.1f, 0.4f), 10.0f));
+    p.push_back (std::make_unique<KonParam> (juce::ParameterID { "release", 1 }, "Release",   KonRange (10.0f, 1000.0f, 1.0f, 0.4f), 120.0f));
+    p.push_back (std::make_unique<KonParam> (juce::ParameterID { "drive", 1 },   "Drive",     KonRange (0.0f, 24.0f, 0.1f), 6.0f));
+    p.push_back (std::make_unique<KonParam> (juce::ParameterID { "mix", 1 },     "Mix",       KonRange (0.0f, 100.0f, 1.0f), 100.0f));
+    p.push_back (std::make_unique<KonParam> (juce::ParameterID { "output", 1 },  "Output",    KonRange (-24.0f, 12.0f, 0.1f), 0.0f));
 
     return { p.begin(), p.end() };
 }
